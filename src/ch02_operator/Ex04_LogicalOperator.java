@@ -39,6 +39,7 @@ public class Ex04_LogicalOperator {
      // not연산자 bool1은 true였으나 not연산자 사용으로 false가 되었음.
      
      
+     
 	}
 
 }

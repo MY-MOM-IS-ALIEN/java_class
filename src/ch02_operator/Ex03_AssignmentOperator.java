@@ -1,6 +1,6 @@
 package ch02_operator;
 
-public class Ex3_AssignmentOperator {
+public class Ex03_AssignmentOperator {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
