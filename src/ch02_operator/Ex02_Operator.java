@@ -16,12 +16,6 @@ public class Ex02_Operator {
 	 System.out.println(num1 / num2);
 	 System.out.println(num1 % num2);
 	 
-	 System.out.println(num1 < num2);
-	 System.out.println(num1 > num2);
-	 System.out.println(num1 <= num2);
-	 System.out.println(num1 >= num2);
-	 System.out.println(num1 == num2);
-	 System.out.println(num1 != num2);
 	 
 	 
 
