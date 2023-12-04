@@ -1,6 +1,6 @@
-package ｃｈ０５＿ｓｗｉｔｃｈ＿ｃａｓｅ;
+package ch05_switch_case;
 
-public class Ｅｘ０１＿ｓｗｉｔｃｈＣａｓｅ {
+public class Ex01_SwitchCase {
     public static void main(String[] args) {
 
         int num = 0;

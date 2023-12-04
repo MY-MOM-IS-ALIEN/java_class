@@ -1,4 +1,4 @@
-package ｃｈ０５＿ｓｗｉｔｃｈ＿ｃａｓｅ;
+package ch05_switch_case;
 
 import java.util.Scanner;
 
@@ -33,6 +33,10 @@ public class Ex02_SwitchCaseExample {
             break;
         }
         System.out.println("");
+
+
+
+
         }
 
 
