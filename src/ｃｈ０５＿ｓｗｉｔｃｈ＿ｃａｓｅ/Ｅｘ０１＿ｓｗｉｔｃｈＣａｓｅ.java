@@ -1,0 +1,43 @@
+package ｃｈ０５＿ｓｗｉｔｃｈ＿ｃａｓｅ;
+
+public class Ｅｘ０１＿ｓｗｉｔｃｈＣａｓｅ {
+    public static void main(String[] args) {
+
+        int num = 0;
+
+        switch (num){
+            case 0: //num == 0
+                System.out.println("num은 0입니다");
+                break;
+            case 1:
+                System.out.println("num은 1입니다");
+                break;
+            case 2:
+                System.out.println("num은 2입니다");
+                break;
+            default:
+                System.out.println("num은 1,2,3이 아닙니다");
+                break;
+        }
+        System.out.println("Switch Case종료");
+
+       String city = "인천";
+       switch (city){
+           case "서울":
+               System.out.println("서울 입니다");
+               break;
+           case "인천":
+               System.out.println("인천 입니다");
+               break;
+           case "제주":
+               System.out.println("제주 입니다");
+               break;
+           default:
+               System.out.println("한국이 아니에요");
+               break;
+
+       }
+        System.out.println(city);
+    }
+
+}
