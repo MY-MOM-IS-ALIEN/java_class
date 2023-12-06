@@ -2,6 +2,7 @@ package ch07_while;
 
 public class Ex01_WhileBasic {
     public static void main(String[] args) {
+
         int i = 1;
 
         while (i <= 3) {
@@ -10,6 +11,7 @@ public class Ex01_WhileBasic {
         }
 
         int j = 10;
+
         do {
             System.out.println("j = " + j);
             j++;
