@@ -8,8 +8,8 @@ public class Ex07_NestedFor {
         for(int i = 1; i <=2; i++){
             System.out.println("안쪽 for문 시작");
             for(int j = 1; j <=3; j++){
-                System.out.print("j = " + j);
-                System.out.println("   i = " + i);
+                System.out.println("j = " + j);
+                System.out.println("i = " + i);
             }
             System.out.println("안쪽 for문 종료");
         }

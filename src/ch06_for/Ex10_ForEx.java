@@ -19,6 +19,7 @@ public class Ex10_ForEx {
                 System.out.println(i);
             }
         }
+
         System.out.println(sum);
     }
 }
