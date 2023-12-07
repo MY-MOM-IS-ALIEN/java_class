@@ -14,7 +14,8 @@ public class Ex02_StringEx {
         String str4 = new String("종료");
 
         while (run) {
-            String ans1 = scanner.next();
+            System.out.print(">");
+            String ans1 = scanner.nextLine();
             if (ans1.equals(str1)) ;
             {
                 System.out.println(ans1);
