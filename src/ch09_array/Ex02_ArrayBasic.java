@@ -5,12 +5,6 @@ public class Ex02_ArrayBasic {
         int[] numbers1 = {10, 20, 30, 40, 50};
         int sum = 0;
         int avg = 0;
-        // 배열 데이터를 출력
-//        System.out.println(numbers1[0]);
-//        System.out.println(numbers1[1]);
-//        System.out.println(numbers1[2]);
-//        System.out.println(numbers1[3]);
-//        System.out.println(numbers1[4]);
 
         //for문을 이용하여 배열 데이터 출력
 
