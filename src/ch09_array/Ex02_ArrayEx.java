@@ -1,6 +1,6 @@
 package ch09_array;
 
-public class Ex02_ArrayBasic {
+public class Ex02_ArrayEx {
     public static void main(String[] args) {
         int[] numbers1 = {10, 20, 30, 40, 50};
         int sum = 0;
