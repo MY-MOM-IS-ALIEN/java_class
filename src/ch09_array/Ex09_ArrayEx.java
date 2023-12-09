@@ -17,29 +17,35 @@ public class Ex09_ArrayEx {
             System.out.println("----------------------------------------------");
             System.out.print("선택 : ");
             int num = scanner.nextInt();
-            if (num == 1) {
-                System.out.print("학생수 : ");
-                int ans1 = scanner.nextInt();
-                score = new int[ans1];
-            }else if(num == 2){
-                for(int i = 0; i < score.length; i++) {
-                    System.out.print(i + 1 + "번 학생 점수 : ");
-                    int ans2 = scanner.nextInt();
-                    score[i] = ans2;
-                    maxscore = maxscore + score[i];
-                    avg = score[i]/score.length;
-                    if (max < score[i])
-                    {
-                        max = score[i];
+            if (num <= 0 || num > 5) {
+                System.out.println("잘못된 선택입니다. 다시 선택해주세요.");
+            } else {
+                if (num == 1) {
+                    System.out.print("학생수 : ");
+                    int ans1 = scanner.nextInt();
+                    score = new int[ans1];
+                    if (ans1 <= 0) {
+                        System.out.println("학생수를 입력해주세요");
                     }
-                }
-            } else if (num == 3) {
-                for(int i = 0; i < score.length; i++){
-                    System.out.println(i + 1 + "번 학생 점수 " + score[i]);
-                }
-            } else if (num == 4) {
-                System.out.println("최고점수 : " + max);
-                System.out.println("평균점수 : " + avg);
+                } else if (num == 2) {
+                    for (int i = 0; i < score.length; i++) {
+                        System.out.print(i + 1 + "번 학생 점수 : ");
+                        int ans2 = scanner.nextInt();
+                        score[i] = ans2;
+                        maxscore = maxscore + score[i];
+                        if (max < score[i]) {
+                            max = score[i];
+                        }
+                    }
+                    avg = (double) maxscore / score.length;
+
+                } else if (num == 3) {
+                    for (int i = 0; i < score.length; i++) {
+                        System.out.println(i + 1 + "번 학생 점수 " + score[i]);
+                    }
+                } else if (num == 4) {
+                    System.out.println("최고점수 : " + max);
+                    System.out.println("평균점수 : " + avg);
 
                     for (int i = 0; i < score.length - 1; i++) {
                         int mini = i;
@@ -55,15 +61,16 @@ public class Ex09_ArrayEx {
                     }
 
                     for (int i = 0; i < score.length; i++) {
-                        if (i != 0) {
-                        }
                         System.out.println(i + 1 + "등 : " + score[i]);
                     }
-                }else if(num == 5){
-                run = false;
-            }
+                } else if (num == 5) {
+                    run = false;
+                }
 
             }
         }
 
     }
+
+}
+
