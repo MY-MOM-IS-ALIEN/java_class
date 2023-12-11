@@ -15,10 +15,9 @@ public class Ex08_ArrayEx {
         int num = scanner.nextInt();
         box = new int[num];
 
-for (int i = 0; i < box.length; i++){
-}
-    System.out.println("배열 크기는 : " + box.length);
-
+        for (int i = 0; i < box.length; i++) {
+        }
+        System.out.println("배열 크기는 : " + box.length);
 
 
     }
