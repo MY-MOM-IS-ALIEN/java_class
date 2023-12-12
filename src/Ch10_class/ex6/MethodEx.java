@@ -10,7 +10,7 @@ public class MethodEx {
     public void method2(String param1) {
         System.out.println("param1 = " + param1);
         String str2 = "집에 가고 싶다";
-        System.out.println(param1 + str2);
+        System.out.println(str2);
     }
 
     // 매개변수 x, 리턴o
