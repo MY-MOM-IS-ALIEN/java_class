@@ -18,6 +18,8 @@ public class StudentMain {
 // print() 메서드를 생성하여 한번에 출력하기
         student.print();
         student1.print();
+        System.out.println("student = " + student);
+        System.out.println("student1 = " + student1);
     }
 }
 
