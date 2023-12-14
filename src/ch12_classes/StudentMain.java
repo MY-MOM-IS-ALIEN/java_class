@@ -1,5 +1,7 @@
 package ch12_classes;
 
+import Ch10_class.ex4.Student;
+
 import java.util.Scanner;
 
 public class StudentMain {
@@ -7,6 +9,8 @@ public class StudentMain {
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
         int selectNo = 0;
+        // StudentService 클래스 객체 선언
+        StudentSevice studentSevice = new StudentSevice();
 
 
         while (run) {
@@ -15,12 +19,14 @@ public class StudentMain {
             System.out.println("----------------------------------------------------------------------");
             System.out.print("선택 : ");
             selectNo = scanner.nextInt();
-            if(selectNo == 1){
-
+            if (selectNo == 1) {
+                System.out.println("메서드 호출 전");
+                studentSevice.method1();
+                System.out.println("메서드 호출 후");
             } else if (selectNo == 2) {
-
+                studentSevice.method2();
             } else if (selectNo == 3) {
-
+                studentSevice.method3();
             } else if (selectNo == 4) {
                 run = false;
             }
