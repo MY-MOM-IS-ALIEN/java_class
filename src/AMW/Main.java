@@ -9,6 +9,7 @@ public class Main {
         int A = scanner.nextInt();
 
         if(A%4 == 0){
+            if(A%4 != 100 || A%4 == 400)
             System.out.println(1);
         }else{
             System.out.println(0);

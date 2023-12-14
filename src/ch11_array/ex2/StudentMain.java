@@ -25,6 +25,12 @@ public class StudentMain {
         for (int i = 0; i < studentList.size(); i++) {
             System.out.println(studentList.get(i).getSudentName());
         }
+        
+        //for each
+        for (Student stu : studentList
+             ) {
+            System.out.println("stu.getSudentName() = " + stu.getSudentName());
+        }
     }
 
 }
