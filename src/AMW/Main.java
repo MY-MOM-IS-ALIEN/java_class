@@ -4,12 +4,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("숫자를 입력하세요");
+        int A = scanner.nextInt();
 
-        System.out.println("|\\_/|");
-        System.out.println("|q p|   /}");
-        System.out.println("( 0 )\"\"\"\\");
-        System.out.println("|\"^\"`    |");
-        System.out.println("||_/=\\\\__|");
+        if(A%4 == 0){
+            System.out.println(1);
+        }else{
+            System.out.println(0);
+        }
 
 
 
