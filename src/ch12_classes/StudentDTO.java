@@ -1,6 +1,6 @@
-package ch11_array.ex2;
+package ch12_classes;
 
-public class Student {
+public class StudentDTO {
     /**
      * 필드
      * 관리번호(id)
@@ -16,14 +16,6 @@ public class Student {
     private String studentNumber;
     private String studentMajor;
     private String studentMoblie;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getSudentName() {
         return sudentName;
@@ -57,11 +49,12 @@ public class Student {
         this.studentMoblie = studentMoblie;
     }
 
-    public Student(){
+    private static Long idValue = 1L;
+    public StudentDTO(){
 
     }
-    public Student(Long id, String sudentName, String studentNumber, String studentMajor, String studentMoblie) {
-        this.id = id;
+    public StudentDTO(String sudentName, String studentNumber, String studentMajor, String studentMoblie) {
+        this.id = idValue++;
         this.sudentName = sudentName;
         this.studentNumber = studentNumber;
         this.studentMajor = studentMajor;
@@ -71,7 +64,6 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
                 ", sudentName='" + sudentName + '\'' +
                 ", studentNumber='" + studentNumber + '\'' +
                 ", studentMajor='" + studentMajor + '\'' +

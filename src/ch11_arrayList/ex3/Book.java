@@ -1,4 +1,4 @@
-package ch11_array.ex03;
+package ch11_arrayList.ex3;
 
 public class Book {
     private Long id;
