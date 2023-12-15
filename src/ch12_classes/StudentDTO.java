@@ -33,7 +33,7 @@ public class StudentDTO {
         this.studentNumber = studentNumber;
     }
 
-    public String getStudentMajor() {
+    public String getStudentMajor(String 데이터사이언티스트) {
         return studentMajor;
     }
 
