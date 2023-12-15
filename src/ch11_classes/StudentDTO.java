@@ -12,17 +12,25 @@ public class StudentDTO {
      */
 
     private Long id;
-    private String sudentName;
+    private String studentName;
     private String studentNumber;
     private String studentMajor;
-    private String studentMoblie;
+    private String studentMobile;
 
-    public String getSudentName() {
-        return sudentName;
+    public Long getId() {
+        return id;
     }
 
-    public void setSudentName(String sudentName) {
-        this.sudentName = sudentName;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public String getStudentNumber() {
@@ -33,7 +41,7 @@ public class StudentDTO {
         this.studentNumber = studentNumber;
     }
 
-    public String getStudentMajor(String 데이터사이언티스트) {
+    public String getStudentMajor() {
         return studentMajor;
     }
 
@@ -41,33 +49,30 @@ public class StudentDTO {
         this.studentMajor = studentMajor;
     }
 
-    public String getStudentMoblie() {
-        return studentMoblie;
+    public String getStudentMobile() {
+        return studentMobile;
     }
 
-    public void setStudentMoblie(String studentMoblie) {
-        this.studentMoblie = studentMoblie;
+    public void setStudentMobile(String studentMobile) {
+        this.studentMobile = studentMobile;
     }
-
-    private static Long idValue = 1L;
-    public StudentDTO(){
-
-    }
-    public StudentDTO(String sudentName, String studentNumber, String studentMajor, String studentMoblie) {
+private static Long idValue = 1L;
+    public StudentDTO(String studentName, String studentNumber, String studentMajor, String studentMobile) {
         this.id = idValue++;
-        this.sudentName = sudentName;
+        this.studentName = studentName;
         this.studentNumber = studentNumber;
         this.studentMajor = studentMajor;
-        this.studentMoblie = studentMoblie;
+        this.studentMobile = studentMobile;
     }
 
     @Override
     public String toString() {
-        return "Student{" +
-                ", sudentName='" + sudentName + '\'' +
+        return "StudentDTO{" +
+                "id=" + id +
+                ", studentName='" + studentName + '\'' +
                 ", studentNumber='" + studentNumber + '\'' +
                 ", studentMajor='" + studentMajor + '\'' +
-                ", studentMoblie='" + studentMoblie + '\'' +
+                ", studentMobile='" + studentMobile + '\'' +
                 '}';
     }
 }

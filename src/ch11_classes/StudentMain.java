@@ -13,7 +13,7 @@ public class StudentMain {
 
         while (run) {
             System.out.println("----------------------------------------------------------------------");
-            System.out.println("1.method1 호출 | " + "2.method2 호출 | " + "3.method3 호출 | " + "4.종료");
+            System.out.println("1.method1 호출 | " + "2.method2 호출 | " + "3.method3 호출 | " + "4.method4 호출 | " + "5.method5 호출");
             System.out.println("----------------------------------------------------------------------");
             System.out.print("선택 : ");
             selectNo = scanner.nextInt();
@@ -26,7 +26,9 @@ public class StudentMain {
             } else if (selectNo == 3) {
                 studentSevice.method3();
             } else if (selectNo == 4) {
-                run = false;
+                studentSevice.method4();
+            } else if (selectNo == 5) {
+                studentSevice.method5();
             }
         }
     }
