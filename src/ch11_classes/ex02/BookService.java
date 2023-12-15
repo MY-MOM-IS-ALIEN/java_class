@@ -3,6 +3,7 @@ package ch11_classes.ex02;
 
 import ch11_arrayList.ex3.Book;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class BookService {
@@ -46,11 +47,35 @@ public class BookService {
         Long id = scanner.nextLong();
         System.out.println("변경할 금액");
         int price = scanner.nextInt();
-        BookDTO bookDTO = bookRepository.method5(id,price);
+        BookDTO bookDTO = bookRepository.method5(id, price);
 
-        System.out.println("금액이 " + bookDTO + "원으로 변경 되었습니다");
+        System.out.println("금액이 변경 되었습니다");
+        System.out.println(bookDTO);
     }
 
+    public void method6() {
+        System.out.println("삭제할 책 id");
+        Long id = scanner.nextLong();
+        boolean result = bookRepository.method6(id);
+        if (result) {
+            System.out.println("삭제 완료");
+        } else {
+            System.out.println("삭제 실패");
+        }
+
+//    public void search(){
+//        System.out.println("검색어 : ");
+//        String bookTitle = scanner.next();
+//        List<BookDTO>bookDTOList = bookRepository.search(bookTitle);
+//        if(bookDTOList.size() > 0){
+//            for (BookDTO bookDTO : bookDTOList){
+//                System.out.println("bookDTO = " + bookDTO);
+//            }
+//        }else {
+//            System.out.println("결과가 없습니다.");
+//        }
+//    }
+    }
 }
 
 
