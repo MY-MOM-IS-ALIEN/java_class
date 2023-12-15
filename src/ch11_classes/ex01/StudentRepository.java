@@ -1,6 +1,4 @@
-package ch11_classes;
-
-import Ch10_class.ex1.Student;
+package ch11_classes.ex01;
 
 import java.util.ArrayList;
 import java.util.List;
