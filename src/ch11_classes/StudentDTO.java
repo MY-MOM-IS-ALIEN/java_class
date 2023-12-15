@@ -1,4 +1,4 @@
-package ch12_classes;
+package ch11_classes;
 
 public class StudentDTO {
     /**

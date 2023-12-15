@@ -1,6 +1,4 @@
-package ch12_classes;
-
-import Ch10_class.ex4.Student;
+package ch11_classes;
 
 import java.util.Scanner;
 
