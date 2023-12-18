@@ -8,6 +8,17 @@ public class MemberRepository {
     private static String loginEmail = null;
     private static List<MemberDTO> memberDTOList = new ArrayList<>();
 
+    public boolean emailCheck(String memberEmail) {
+        boolean result = true;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            if(memberEmail.equals(memberDTOList.get(i).getMemberEmail())){
+                // 중복되는 이메일이 있다 > 결과를 false로 줌
+                result = false;
+            }
+        }
+        return result;
+    }
+
     public boolean join(MemberDTO memberDTO) {
         return memberDTOList.add(memberDTO);
     }
@@ -45,4 +56,6 @@ public class MemberRepository {
         }
         return memberDTO;
     }
+
+
 }

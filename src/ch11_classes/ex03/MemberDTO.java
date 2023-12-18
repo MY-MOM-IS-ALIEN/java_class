@@ -51,7 +51,7 @@ public class MemberDTO {
     private static Long idValue = 1L;
 
     public MemberDTO(String memberEmail, String memberPassword, String memberName, String memberMobile) {
-        this.id = idValue;
+        this.id = idValue++;
         this.memberEmail = memberEmail;
         this.memberPassword = memberPassword;
         this.memberName = memberName;
@@ -61,7 +61,7 @@ public class MemberDTO {
     @Override
     public String toString() {
         return "MemberDTO{" +
-                "id=" + idValue +
+                "id=" + id +
                 ", memberEmail='" + memberEmail + '\'' +
                 ", memberPassword=" + memberPassword +
                 ", memberName='" + memberName + '\'' +

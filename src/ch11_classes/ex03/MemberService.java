@@ -11,23 +11,32 @@ public class MemberService {
     private static String loginEmail = null;
 
     public void join() {
-        boolean run = true;
-        while (run) {
+        boolean checkResult = false;
+        String memberEmail = null;
+        do{
             System.out.println("사용할 이메일 입력");
-            String memberEmail = scanner.next();
-            System.out.println("사용할 패스워드 입력");
-            String memberPassword = scanner.next();
-            System.out.println("가입자 이름 입력");
-            String memberName = scanner.next();
-            System.out.println("가입자 전화번호 입력");
-            String memberMobile = scanner.next();
-            MemberDTO memberDTO = new MemberDTO(memberEmail, memberPassword, memberName, memberMobile);
-            boolean result = memberRepository.join(memberDTO);
-            if (result) {
-                System.out.println("가입 완료");
-            } else {
-                System.out.println("가입 실패");
+            memberEmail = scanner.next();
+            // checkResult 가 true 라면 사용가능(반복종료) 그 반대라면 사용불가(다시 이메일 입력)
+            checkResult = memberRepository.emailCheck(memberEmail);
+            if(checkResult) {
+                System.out.println("사용 가능한 이메일 입니다");
+            }else{
+                System.out.println("이미 사용중인 이메일 입니다.");
             }
+        }while (!checkResult); // checkResult 값이 false라면 계속 반복
+
+        System.out.println("사용할 패스워드 입력");
+        String memberPassword = scanner.next();
+        System.out.println("가입자 이름 입력");
+        String memberName = scanner.next();
+        System.out.println("가입자 전화번호 입력");
+        String memberMobile = scanner.next();
+        MemberDTO memberDTO = new MemberDTO(memberEmail, memberPassword, memberName, memberMobile);
+        boolean result = memberRepository.join(memberDTO);
+        if (result) {
+            System.out.println("가입 완료");
+        } else {
+            System.out.println("가입 실패");
         }
     }
 
@@ -80,6 +89,8 @@ public class MemberService {
             boolean memberDTO = memberRepository.resign(memberPassword);
             if (memberDTO) {
                 System.out.println("탈퇴 성공");
+            } else {
+                System.out.println("비밀번호가 일치하지 않습니다. 메인메뉴로 돌아갑니다.");
             }
         } else
             System.out.println("로그인 후 탈퇴 가능합니다.");
