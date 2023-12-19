@@ -35,10 +35,7 @@ public class BoardService {
 
     public void findAll() {
         List<BoardDTO> boardDTOList = boardRepository.findAll();
-
-        for (BoardDTO boardDTO : boardDTOList) {
-            System.out.println("글번호 : " + boardDTO.getId() + " 제목 : " + boardDTO.getBoardTitle() + " 작성자 : " + boardDTO.getBoardWriter() + " 내용 : " + boardDTO.getBoardContents());
-        }
+        listPrint(boardDTOList);
     }
 
     public void findId() {
@@ -105,10 +102,20 @@ public class BoardService {
 
         if (result != null) {
             for (int i = 0; i < boardDTOList.size(); i++) {
-                System.out.println("boardDTO = " + boardDTOList);
+                listPrint(boardDTOList);
             }
         } else {
             System.out.println("검색 내용이 없습니다.");
+        }
+    }
+
+    //목록 출력전용 메서드
+    // findAll , search 메서드로 부터 List 데이터를 전달 받아서 출력을 하는 메서드
+    // Refactoring(리팩터링) : 정리정돈 , 효율적인 유지보수 가능
+    private void listPrint(List<BoardDTO> boardDTOList) {
+        System.out.println("id\t" + "title\t" + "writer\t" + "hits\t" + "date\t");
+        for (BoardDTO boardDTO : boardDTOList) {
+            System.out.println("글번호 : " + boardDTO.getId() + " 제목 : " + boardDTO.getBoardTitle() + " 작성자 : " + boardDTO.getBoardWriter() + " 내용 : " + boardDTO.getBoardContents() + "\t" + boardDTO.getCreatedAt());
         }
     }
 }
