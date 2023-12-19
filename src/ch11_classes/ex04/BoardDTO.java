@@ -8,7 +8,7 @@ public class BoardDTO {
     private String boardTitle;
     private String boardWriter;
     private String boardContents;
-    private Long boardPass;
+    private String boardPass;
     private int boardHits;
     private String createdAt;
 
@@ -52,11 +52,11 @@ public class BoardDTO {
         this.boardContents = boardContents;
     }
 
-    public Long getBoardPass() {
+    public String getBoardPass() {
         return boardPass;
     }
 
-    public void setBoardPass(Long boardPass) {
+    public void setBoardPass(String boardPass) {
         this.boardPass = boardPass;
     }
 
@@ -72,7 +72,7 @@ public class BoardDTO {
     public static Long boardHitsValue = 0L;
 
 
-    public BoardDTO(String boardTitle, String boardWriter, String boardContents, Long boardPass) {
+    public BoardDTO(String boardTitle, String boardWriter, String boardContents, String boardPass) {
         this.id = idValue++;
         this.boardTitle = boardTitle;
         this.boardWriter = boardWriter;

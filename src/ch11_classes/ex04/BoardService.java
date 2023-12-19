@@ -21,7 +21,7 @@ public class BoardService {
         System.out.print("내용 : ");
         String boardContents = scanner.next();
         System.out.print("비밀번호 : ");
-        Long boardPass = scanner.nextLong();
+        String boardPass = scanner.next();
 
         BoardDTO boardDTO = new BoardDTO(boardTitle, boardWriter, boardContents, boardPass);
         boolean result = boardRepository.Writing(boardDTO);
@@ -115,7 +115,14 @@ public class BoardService {
     private void listPrint(List<BoardDTO> boardDTOList) {
         System.out.println("id\t" + "title\t" + "writer\t" + "hits\t" + "date\t");
         for (BoardDTO boardDTO : boardDTOList) {
-            System.out.println("글번호 : " + boardDTO.getId() + " 제목 : " + boardDTO.getBoardTitle() + " 작성자 : " + boardDTO.getBoardWriter() + " 내용 : " + boardDTO.getBoardContents() + "\t" + boardDTO.getCreatedAt());
+            System.out.println("글번호 : " + boardDTO.getId() + " 제목 : " + boardDTO.getBoardTitle() + " 작성자 : " + boardDTO.getBoardWriter() +
+                    " 내용 : " + boardDTO.getBoardContents() + "\t" + boardDTO.getCreatedAt());
+        }
+    }
+    public void testData(){
+        for (int i = 0; i < 11; i++) {
+            BoardDTO boardDTO = new BoardDTO("title" + i, "writer" + i, "contents" + i, "1234" + i);
+            boardRepository.Writing(boardDTO);
         }
     }
 }
