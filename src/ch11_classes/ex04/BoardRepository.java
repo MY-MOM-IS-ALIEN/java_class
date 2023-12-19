@@ -16,34 +16,36 @@ public class BoardRepository {
         return boardDTOList;
     }
 
+    public boolean HitsUp(Long id) {
+        boolean boardDTO1 = false;
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if (id.equals(boardDTOList.get(i).getId())) {
+                int result = boardDTOList.get(i).getBoardHits();
+                result++;
+                boardDTOList.get(i).setBoardHits(result);
+                boardDTO1 = true;
+            }
+        }
+        return boardDTO1;
+    }
     public BoardDTO findId(Long id) {
         BoardDTO boardDTO = null;
         for (int i = 0; i < boardDTOList.size(); i++) {
             if (id.equals(boardDTOList.get(i).getId()))
-            boardDTO = boardDTOList.get(i);
+                boardDTO = boardDTOList.get(i);
         }
         return boardDTO;
     }
 
-    public boolean check(Long id, Long password) {
-        boolean result = false;
-        for (int i = 0; i < boardDTOList.size(); i++) {
-            if (id.equals(boardDTOList.get(i).getId()) && password.equals(boardDTOList.get(i).getBoardPass())) ;
-            result = true;
-        }
-        return result;
-    }
-
-    public boolean update(Long id, String updateTitle, String updateContents) {
-        boolean boardDTO = false;
+    public boolean update(Long id, String boardTitle, String boardContents) {
         for (int i = 0; i < boardDTOList.size(); i++) {
             if (id.equals(boardDTOList.get(i).getId())) {
-                boardDTOList.get(i).setBoardTitle(updateTitle);
-                boardDTOList.get(i).setBoardContents(updateContents);
-                boardDTO = true;
+                boardDTOList.get(i).setBoardTitle(boardTitle);
+                boardDTOList.get(i).setBoardContents(boardContents);
+                return true;
             }
         }
-        return boardDTO;
+        return false;
     }
 
     public boolean remove(Long id, Long password) {

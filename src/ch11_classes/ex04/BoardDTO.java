@@ -6,15 +6,15 @@ public class BoardDTO {
     private String boardWriter;
     private String boardContents;
     private Long boardPass;
-//    private int boardViews;
-//
-//    public int getViews() {
-//        return boardViews;
-//    }
-//
-//    public void setViews(int views) {
-//        this.boardViews = views;
-//    }
+    private int boardHits;
+
+    public int getBoardHits() {
+        return boardHits;
+    }
+
+    public void setBoardHits(int boardHits) {
+        this.boardHits = boardHits;
+    }
 
     public Long getId() {
         return id;
@@ -58,7 +58,7 @@ public class BoardDTO {
 
 
     public static Long idValue = 1L;
-//    public static int views = 0;
+    public static Long boardHitsValue = 0L;
 
 
     public BoardDTO(String boardTitle, String boardWriter, String boardContents, Long boardPass) {
@@ -67,7 +67,7 @@ public class BoardDTO {
         this.boardWriter = boardWriter;
         this.boardContents = boardContents;
         this.boardPass = boardPass;
-//        this.boardViews = views++;
+        this.boardHits = 0;
     }
 
     @Override
@@ -78,7 +78,8 @@ public class BoardDTO {
                 ", boardWriter='" + boardWriter + '\'' +
                 ", boardContents='" + boardContents + '\'' +
                 ", boardPass=" + boardPass +
-//                ", boardViews=" + boardViews +
+                ", boardViews=" + boardHits +
                 '}';
     }
 }
+

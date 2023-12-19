@@ -44,32 +44,43 @@ public class BoardService {
     public void findId() {
         System.out.print("조회할 글번호 입력 : ");
         Long id = scanner.nextLong();
-        BoardDTO boardDTO = boardRepository.findId(id);
-
-        System.out.println("boardDTO = " + boardDTO);
+        boolean boardDTO1 = boardRepository.HitsUp(id);
+        if (boardDTO1) {
+            BoardDTO boardDTO = boardRepository.findId(id);
+            if (boardDTO != null) {
+                System.out.println("boardDTO = " + boardDTO);
+            } else {
+                System.out.println("조회된 정보가 없습니다.");
+            }
+        }
     }
 
     public void update() {
-        System.out.println("수정할 글번호 : ");
+        System.out.print("수정할 id: ");
         Long id = scanner.nextLong();
-        System.out.println("비밀번호 입력 : ");
-        Long password = scanner.nextLong();
-        boolean boardDTO = boardRepository.check(id, password);
-        if (boardDTO) {
-            System.out.println("수정할 제목");
-            String updateTitle = scanner.next();
-            System.out.println("수정할 내용");
-            String updateContents = scanner.next();
-
-            boolean boardDTO1 = boardRepository.update(id, updateTitle, updateContents);
-            if (boardDTO1) {
-                System.out.println("수정 완료");
+        System.out.print("비밀번호: ");
+        String boardPass = scanner.next();
+        BoardDTO boardDTO = boardRepository.findId(id);
+        // 게시글 있는지 확인
+        if (boardDTO != null) {
+            // 비밀번호 검증
+            if (boardPass.equals(boardDTO.getBoardPass())) {
+                // 비밀번호가 맞으면 수정할 제목, 내용 입력받고 수정처리
+                System.out.print("수정 제목: ");
+                String boardTitle = scanner.next();
+                System.out.print("수정 내용: ");
+                String boardContents = scanner.next();
+                boolean result = boardRepository.update(id, boardTitle, boardContents);
+                if (result) {
+                    System.out.println("수정 완료");
+                } else {
+                    System.out.println("수정 실패");
+                }
             } else {
-                System.out.println("수정 실패");
+                System.out.println("비밀번호가 일치하지 않습니다!");
             }
         } else {
-            System.out.println("비밀번호가 틀렸습니다.");
-
+            System.out.println("요청하신 게시글은 존재하지 않습니다!");
         }
     }
 

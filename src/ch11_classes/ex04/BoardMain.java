@@ -33,6 +33,8 @@ public class BoardMain {
             } else if (selectNo == 6) {
 //            // 호출하는 문장 작성
                 boardService.seach();
+            } else if (selectNo == 0) {
+                run = false;
             }
         }
     }
