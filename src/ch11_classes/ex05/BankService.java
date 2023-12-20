@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class BankService {
     BankRepository bankRepository = new BankRepository();
     Scanner scanner = new Scanner(System.in);
-    List<ClientDTO> clientDTOList = new ArrayList<>();
 
     public void join() {
         System.out.println("희망하는 계좌번호");
@@ -115,17 +114,24 @@ public class BankService {
                 List<AccountDTO> accountDTOList = bankRepository.history();
                 if (selectNo == 1) {
                     for (int i = 0; i < accountDTOList.size(); i++) {
+                        if (accountNumber.equals(accountDTOList.get(i).getAccountNumber())) {
                             System.out.println("거래번호 : " + accountDTOList.get(i).getId() + " 계좌번호 : " + accountDTOList.get(i).getAccountNumber() + " 입금액 : " + accountDTOList.get(i).getDeposit() + " 출금액 : " + accountDTOList.get(i).getWithdraw() + " 거래시간 : " + accountDTOList.get(i).getBankingAt());
+                        }
                     }
                 } else if (selectNo == 2) {
                     for (int i = 0; i < accountDTOList.size(); i++) {
-                        if (accountDTOList.get(i).getDeposit() > 0)
-                            System.out.println("거래번호 : " + accountDTOList.get(i).getId() + " 계좌번호 : " + accountDTOList.get(i).getAccountNumber() + " 입금액 : " + accountDTOList.get(i).getDeposit() + " 거래시간 : " + accountDTOList.get(i).getBankingAt());
+                        if (accountNumber.equals(accountDTOList.get(i).getAccountNumber())) {
+                            if (accountDTOList.get(i).getDeposit() > 0) {
+                                System.out.println("거래번호 : " + accountDTOList.get(i).getId() + " 계좌번호 : " + accountDTOList.get(i).getAccountNumber() + " 입금액 : " + accountDTOList.get(i).getDeposit() + " 거래시간 : " + accountDTOList.get(i).getBankingAt());
+                            }
+                        }
                     }
                 } else if (selectNo == 3) {
                     for (int i = 0; i < accountDTOList.size(); i++) {
-                        if (accountDTOList.get(i).getWithdraw() > 0)
-                            System.out.println("거래번호 : " + accountDTOList.get(i).getId() + " 계좌번호 : " + accountDTOList.get(i).getAccountNumber() + " 출금액 : " + accountDTOList.get(i).getWithdraw() + " 거래시간 : " + accountDTOList.get(i).getBankingAt());
+                        if (accountNumber.equals(accountDTOList.get(i).getAccountNumber())) {
+                            if (accountDTOList.get(i).getWithdraw() > 0)
+                                System.out.println("거래번호 : " + accountDTOList.get(i).getId() + " 계좌번호 : " + accountDTOList.get(i).getAccountNumber() + " 출금액 : " + accountDTOList.get(i).getWithdraw() + " 거래시간 : " + accountDTOList.get(i).getBankingAt());
+                        }
                     }
                 } else if (selectNo == 4) {
                     run = false;
@@ -136,5 +142,6 @@ public class BankService {
         }
     }
 }
+
 
 

@@ -61,7 +61,7 @@ public class BankRepository {
         for (int i = 0; i < clientDTOList.size(); i++) {
             if (accountNumber.equals(clientDTOList.get(i).getAccountNumber())) {
                 if (withdraw > clientDTOList.get(i).getBalance()) {
-                    return result;
+                    return null;
                 } else {
                     long result1 = clientDTOList.get(i).getBalance();
                     result1 = result1 - withdraw;
@@ -69,8 +69,6 @@ public class BankRepository {
                     result = clientDTOList.get(i);
                     return result;
                 }
-            } else {
-                return null;
             }
         }
         return result;
