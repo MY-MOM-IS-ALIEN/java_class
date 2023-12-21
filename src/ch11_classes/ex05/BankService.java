@@ -141,7 +141,40 @@ public class BankService {
             System.out.println("없는 계좌번호 입니다 다시 확인 해주세요");
         }
     }
+    public void transfer() {
+        System.out.print("보내실 분 계좌번호: ");
+        String accountNumberFrom = scanner.next();
+        System.out.print("받으실 분 계좌번호: ");
+        String accountNumberTo = scanner.next();
+        System.out.print("보낼 금액: ");
+        long money = scanner.nextLong();
+        ClientDTO clientTo = bankRepository.check(accountNumberTo);
+        ClientDTO clientFrom = bankRepository.check(accountNumberFrom);
+        if (clientTo != null && clientFrom !=null) {
+            System.out.println("받으실 분이 " + clientTo.getClientName() + "님이 맞습니까?");
+            System.out.println("맞으면 1번, 틀리면 2번을 입력해주세요.");
+            System.out.print("입력> ");
+            int selectNo = scanner.nextInt();
+            if (selectNo == 1) {
+                System.out.print("비밀번호를 입력해주세요: ");
+                String clientPass = scanner.next();
+                if (clientPass.equals(clientFrom.getClientPass()) && money <= clientFrom.getBalance()) {
+                    bankRepository.transfer(accountNumberFrom, accountNumberTo, money);
+                    System.out.println("이체가 완료되었습니다. ");
+                } else if (!clientPass.equals(clientFrom.getClientPass())) {
+                    System.out.println("비밀번호가 틀립니다!");
+                } else if (money > clientFrom.getBalance()) {
+                    System.out.println("잔액이 부족합니다!");
+                }
+            } else if (selectNo == 2) {
+                System.out.println("메인메뉴로 돌아갑니다.");
+            }
+        } else {
+            System.out.println("해당 계좌가 없습니다.");
+        }
+    }
 }
+
 
 
 

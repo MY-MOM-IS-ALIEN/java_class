@@ -21,9 +21,11 @@ public class BankRepository {
     public boolean join(ClientDTO clientDTO) {
         return clientDTOList.add(clientDTO);
     }
-    public List<ClientDTO> findByAccount(){
-                return clientDTOList;
-            }
+
+    public List<ClientDTO> findByAccount() {
+        return clientDTOList;
+    }
+
     public boolean deposit(String accountNumber, long deposit) {
         for (int i = 0; i < clientDTOList.size(); i++) {
             if (accountNumber.equals(clientDTOList.get(i).getAccountNumber())) {
@@ -78,7 +80,7 @@ public class BankRepository {
         boolean result = false;
         for (int i = 0; i < clientDTOList.size(); i++) {
             if (accountNumber.equals(clientDTOList.get(i).getAccountNumber())) {
-                AccountDTO accountDTO = new AccountDTO(accountNumber,0,withdraw);
+                AccountDTO accountDTO = new AccountDTO(accountNumber, 0, withdraw);
                 result = accountDTOList.add(accountDTO);
             }
         }
@@ -88,4 +90,23 @@ public class BankRepository {
     public List<AccountDTO> history() {
         return accountDTOList;
     }
+
+    public void transfer(String accountNumberFrom, String accountNumberTo, long money) {
+        for (int i = 0; i < clientDTOList.size(); i++) {
+            if (accountNumberFrom.equals(clientDTOList.get(i).getAccountNumber())) {
+                long balance = clientDTOList.get(i).getBalance();
+                balance = balance - money;
+                clientDTOList.get(i).setBalance(balance);
+                AccountDTO accountDTO = new AccountDTO(accountNumberFrom, 0, money);
+                accountDTOList.add(accountDTO);
+            } else if (accountNumberTo.equals(clientDTOList.get(i).getAccountNumber())) {
+                long balance = clientDTOList.get(i).getBalance();
+                balance = balance + money;
+                clientDTOList.get(i).setBalance(balance);
+                AccountDTO accountDTO = new AccountDTO(accountNumberTo, money, 0);
+                accountDTOList.add(accountDTO);
+            }
+        }
+    }
 }
+

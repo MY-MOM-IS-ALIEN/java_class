@@ -32,9 +32,9 @@ public class BankMain {
             } else if (selectNo == 5) {
 //                 호출하는 문장 작성
                 bankService.history();
-//            } else if (selectNo == 6) {
+            } else if (selectNo == 6) {
 ////            // 호출하는 문장 작성
-//                bankService.seach();
+                bankService.transfer();
 //            } else if (selectNo == 7) {
 //                bankService.testData();
             } else if (selectNo == 0) {
