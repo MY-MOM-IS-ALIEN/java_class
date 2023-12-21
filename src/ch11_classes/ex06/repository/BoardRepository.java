@@ -1,5 +1,6 @@
 package ch11_classes.ex06.repository;
 
+import ch11_classes.ex06.CommonVariables;
 import ch11_classes.ex06.DTO.BoardDTO;
 
 import java.util.ArrayList;
@@ -26,11 +27,26 @@ public class BoardRepository {
                 for (int j = 0; j < boardDTOList.size(); j++) {
                     if (id.equals(boardDTOList.get(i).getId())) {
                         BoardDTO boardDTO1 = boardDTOList.get(i);
-                return boardDTO1;
+                        return boardDTO1;
                     }
                 }
             }
         }
         return null;
+    }
+
+    public boolean update(Long id, String boardTitle, String boardContents) {
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if (id.equals(boardDTOList.get(i).getId())) {
+                if (CommonVariables.loginId.equals(boardDTOList.get(i).getBoardWriter())) {
+                    boardDTOList.get(i).setBoardTitle(boardTitle);
+                    boardDTOList.get(i).setBoardContents(boardContents);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 }

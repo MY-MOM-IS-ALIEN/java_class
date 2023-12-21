@@ -117,6 +117,8 @@ public class MemberService {
                     boardService.findById();
                 } else if (selectNo == 4) {
                     boardService.update();
+                } else if (selectNo == 5) {
+                    boardService.delete();
                 }
             }
         }else{
