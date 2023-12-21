@@ -36,7 +36,7 @@ public class BankService {
     public void accountCheck() {
         System.out.println("조회할 계좌번호 입력");
         String accountNumber = scanner.next();
-        List<ClientDTO> clientDTOList = bankRepository.findByAccount();
+        List<ClientDTO> clientDTOList = bankRepository.accountCheck();
         if (clientDTOList == null) {
             System.out.println("없는 계좌번호 입니다 다시 확인 해주세요");
         } else {
@@ -71,7 +71,7 @@ public class BankService {
     public void withdraw() {
         System.out.println("출금할 계좌번호 입력");
         String accountNumber = scanner.next();
-        List<ClientDTO> clientDTOList = bankRepository.findByAccount();
+        List<ClientDTO> clientDTOList = bankRepository.accountCheck();
         if (clientDTOList != null) {
             System.out.println("계좌의 비밀번호를 입력");
             String clientPass = scanner.next();

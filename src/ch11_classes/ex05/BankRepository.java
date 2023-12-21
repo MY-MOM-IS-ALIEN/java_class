@@ -22,7 +22,7 @@ public class BankRepository {
         return clientDTOList.add(clientDTO);
     }
 
-    public List<ClientDTO> findByAccount() {
+    public List<ClientDTO> accountCheck() {
         return clientDTOList;
     }
 
