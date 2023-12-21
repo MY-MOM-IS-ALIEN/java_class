@@ -49,4 +49,17 @@ public class BoardRepository {
         }
         return false;
     }
+    public boolean delete(Long id){
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if (id.equals(boardDTOList.get(i).getId())) {
+                if (CommonVariables.loginId.equals(boardDTOList.get(i).getBoardWriter())) {
+                    boardDTOList.remove(i);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 }

@@ -58,7 +58,7 @@ public class BoardService {
                 boolean boardDTO1 = boardRepository.update(id, boardTitle, boardContents);
                 if (boardDTO1) {
                     System.out.println("수정 완료");
-                }else{
+                } else {
                     System.out.println("수정 실패");
                 }
             }
@@ -67,4 +67,27 @@ public class BoardService {
         }
     }
 
+    public void delete() {
+        System.out.println("삭제할 글번호");
+        Long id = scanner.nextLong();
+        BoardDTO boardDTO = boardRepository.findById(id);
+        if (boardDTO != null) {
+            if (!CommonVariables.loginId.equals(boardDTO.getBoardWriter())) {
+                System.out.println("본인이 작성한 글만 삭제 가능합니다.");
+            } else {
+                System.out.println("정말 삭제 하시겠습니까?");
+                int selectNo = scanner.nextInt();
+                if (selectNo == 1) {
+                    boolean boardDTO1 = boardRepository.delete(id);
+                    if (boardDTO1) {
+                        System.out.println("삭제 완료");
+                    } else {
+                        System.out.println("삭제 실패");
+                    }
+                }
+            }
+        } else {
+            System.out.println("해당 글을 찾을 수 없습니다.");
+        }
+    }
 }

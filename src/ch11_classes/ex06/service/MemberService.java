@@ -119,6 +119,10 @@ public class MemberService {
                     boardService.update();
                 } else if (selectNo == 5) {
                     boardService.delete();
+                }else if(selectNo == 6){
+                    boardService.findByTitle();
+                } else if (selectNo == 0) {
+                    run = false;
                 }
             }
         }else{
