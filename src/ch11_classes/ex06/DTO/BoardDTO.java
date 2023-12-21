@@ -1,5 +1,7 @@
 package ch11_classes.ex06.DTO;
 
+import ch11_classes.ex06.CommonVariables;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -61,10 +63,10 @@ public class BoardDTO {
 private static Long idValue = 1L;
     private static long hits = 0;
 
-    public BoardDTO(String boardTitle, String boardWriter, String boardContents) {
+    public BoardDTO(String boardTitle, String boardContents) {
         this.id = idValue++;
         this.boardTitle = boardTitle;
-        this.boardWriter = boardWriter;
+        this.boardWriter = CommonVariables.loginId;
         this.boardContents = boardContents;
         this.boardHits = hits;
         this.createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
