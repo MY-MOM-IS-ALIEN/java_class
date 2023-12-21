@@ -90,4 +90,16 @@ public class BoardService {
             System.out.println("해당 글을 찾을 수 없습니다.");
         }
     }
+    public void findByTitle(){
+        System.out.println("검색어 : ");
+        String boardTitle = scanner.next();
+        List<BoardDTO> boardDTO = boardRepository.findByTitle(boardTitle);
+        if (boardDTO != null) {
+            for (int i = 0; i < boardDTO.size(); i++) {
+            }
+            System.out.println(boardDTO);
+        } else {
+            System.out.println("검색내용이 없습니다.");
+        }
+    }
 }

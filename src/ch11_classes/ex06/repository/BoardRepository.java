@@ -49,7 +49,8 @@ public class BoardRepository {
         }
         return false;
     }
-    public boolean delete(Long id){
+
+    public boolean delete(Long id) {
         for (int i = 0; i < boardDTOList.size(); i++) {
             if (id.equals(boardDTOList.get(i).getId())) {
                 if (CommonVariables.loginId.equals(boardDTOList.get(i).getBoardWriter())) {
@@ -61,5 +62,16 @@ public class BoardRepository {
             }
         }
         return false;
+    }
+
+    public List<BoardDTO> findByTitle(String boardTitle) {
+        List<BoardDTO> boardDTOS = new ArrayList<>();
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if (boardDTOList.get(i).getBoardTitle().contains(boardTitle)) {
+                BoardDTO boardDTO = boardDTOList.get(i);
+                boardDTOS.add(boardDTO);
+            }
+        }
+        return boardDTOS;
     }
 }
