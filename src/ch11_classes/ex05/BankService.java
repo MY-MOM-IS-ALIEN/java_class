@@ -30,9 +30,7 @@ public class BankService {
             } else {
                 System.out.println("가입 실패");
             }
-
         }
-
     }
 
     public void accountCheck() {
@@ -164,7 +162,7 @@ public class BankService {
                 } else if (!clientPass.equals(clientFrom.getClientPass())) {
                     System.out.println("비밀번호가 틀립니다!");
                 } else if (money > clientFrom.getBalance()) {
-                    System.out.println("잔액이 부족합니다!");
+                    System.out.println("잔액 부족");
                 }
             } else if (selectNo == 2) {
                 System.out.println("메인메뉴로 돌아갑니다.");
