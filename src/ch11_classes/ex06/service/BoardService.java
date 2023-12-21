@@ -33,12 +33,16 @@ public class BoardService {
 
     public void findById() {
         System.out.println("찾을 글번호");
-        String id = scanner.next();
+        Long id = scanner.nextLong();
         BoardDTO boardDTO = boardRepository.findById(id);
-        if(boardDTO != null){
+        if (boardDTO != null) {
             System.out.println(boardDTO);
-        }else{
+        } else {
             System.out.println("해당 글을 찾을 수 없습니다.");
         }
+    }
+
+    public void update() {
+
     }
 }

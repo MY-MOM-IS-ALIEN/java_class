@@ -115,6 +115,8 @@ public class MemberService {
                     boardService.postList();
                 } else if (selectNo == 3) {
                     boardService.findById();
+                } else if (selectNo == 4) {
+                    boardService.update();
                 }
             }
         }else{
