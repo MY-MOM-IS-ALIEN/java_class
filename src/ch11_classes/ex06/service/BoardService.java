@@ -30,9 +30,9 @@ public class BoardService {
 
     public void postList() {
         List<BoardDTO> boardDTOList = boardRepository.postList();
-        for (int i = 0; i < boardDTOList.size(); i++) {
+        for (BoardDTO boardDTO : boardDTOList) {
+        System.out.println("글번호 : " + boardDTO.getId() + " | 글제목 : " + boardDTO.getBoardTitle() + " | 작성자 : " + boardDTO.getBoardWriter() + " | 작성시간 : " + boardDTO.getCreatedAt());
         }
-        System.out.println("boardDTOList = " + boardDTOList);
     }
 
     public void findById() {
@@ -45,7 +45,7 @@ public class BoardService {
             List<CommentDTO> commentDTOList = commentRepository.commentList(id);
             if (commentDTOList.size() > 0) {
                 for (CommentDTO commentDTO1 : commentDTOList) {
-                    System.out.println(commentDTO1);
+                    System.out.println("글번호 : " + commentDTO1.getId() + " | 작성자 : " + commentDTO1.getCommentWriter() + " | 내용 : " + commentDTO1.getCommentContents() + " | 작성시간 : " + commentDTO1.getCreatedAt());
                 }
             } else {
                 System.out.println("작성된 댓글이 없습니다.");

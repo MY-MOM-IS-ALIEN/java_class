@@ -52,9 +52,9 @@ public class MemberService {
 
     public void list() {
         List<MemberDTO> memberDTOList = memberRepository.list();
-        for (int i = 0; i < memberDTOList.size(); i++) {
+        for (MemberDTO memberDTO : memberDTOList) {
+            System.out.println("회원번호 : " + memberDTO.getId() + " | 이메일 : " + memberDTO.getMemberEmail() + " | 최초가입 : " + memberDTO.getCreatedAt());
         }
-        System.out.println("memberDTOList = " + memberDTOList);
     }
 
     public void update() {
@@ -77,39 +77,41 @@ public class MemberService {
             System.out.println("비밀번호를 입력해주세요");
             String memberPassword = scanner.next();
             boolean memberDTO = memberRepository.checkPass(memberPassword);
-            if(memberDTO){
+            if (memberDTO) {
                 System.out.println("정말 탈퇴 하시겠습니까?");
                 System.out.println("1.예 | 2.아니오");
                 int selectNo = scanner.nextInt();
-                if(selectNo == 1){
+                if (selectNo == 1) {
                     boolean memberDTO1 = memberRepository.resign(memberPassword);
-                    if(memberDTO1){
-                    System.out.println("탈퇴 완료");
+                    if (memberDTO1) {
+                        System.out.println("탈퇴 완료");
+                        CommonVariables.loginId = null;
                     }
-                }else{
+                } else {
                     System.out.println("메인으로 돌아갑니다.");
                 }
-            }else{
+            } else {
                 System.out.println("비밀번호가 틀렸습니다.");
             }
-        }else{
+        } else {
             System.out.println("로그인 후 탈퇴 가능합니다.");
         }
     }
-    public void logout(){
+
+    public void logout() {
         CommonVariables.loginId = null;
         System.out.println("로그아웃 되었습니다");
     }
 
-    public void board(){
+    public void board() {
         boolean run = true;
-        if(CommonVariables.loginId != null){
-            while (run){
+        if (CommonVariables.loginId != null) {
+            while (run) {
                 System.out.println("-------------------------------------게시판-------------------------------------");
                 System.out.println("1.글작성 | 2.글목록 | 3.글조회 | 4.글수정 | 5.글삭제 | 6.검색 | 99.sample | 0.메인메뉴");
                 System.out.println("-------------------------------------------------------------------------------");
                 int selectNo = scanner.nextInt();
-                if(selectNo == 1){
+                if (selectNo == 1) {
                     boardService.newPost();
                 } else if (selectNo == 2) {
                     boardService.postList();
@@ -119,13 +121,13 @@ public class MemberService {
                     boardService.update();
                 } else if (selectNo == 5) {
                     boardService.delete();
-                }else if(selectNo == 6){
+                } else if (selectNo == 6) {
                     boardService.findByTitle();
                 } else if (selectNo == 0) {
                     run = false;
                 }
             }
-        }else{
+        } else {
             System.out.println("로그인 후 이용 가능합니다.");
         }
     }
