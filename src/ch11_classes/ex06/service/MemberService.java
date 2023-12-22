@@ -52,8 +52,12 @@ public class MemberService {
 
     public void list() {
         List<MemberDTO> memberDTOList = memberRepository.list();
-        for (MemberDTO memberDTO : memberDTOList) {
-            System.out.println("회원번호 : " + memberDTO.getId() + " | 이메일 : " + memberDTO.getMemberEmail() + " | 최초가입 : " + memberDTO.getCreatedAt());
+        if(memberDTOList.isEmpty()){
+            System.out.println("조회된 데이터가 없습니다.");
+        }else{
+            for (MemberDTO memberDTO : memberDTOList) {
+                System.out.println("회원번호 : " + memberDTO.getId() + " | 이메일 : " + memberDTO.getMemberEmail() + " | 최초가입 : " + memberDTO.getCreatedAt());
+            }
         }
     }
 
