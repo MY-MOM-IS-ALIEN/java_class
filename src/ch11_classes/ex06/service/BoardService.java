@@ -2,13 +2,16 @@ package ch11_classes.ex06.service;
 
 import ch11_classes.ex06.CommonVariables;
 import ch11_classes.ex06.DTO.BoardDTO;
+import ch11_classes.ex06.DTO.CommentDTO;
 import ch11_classes.ex06.repository.BoardRepository;
+import ch11_classes.ex06.repository.CommentRepository;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class BoardService {
     BoardRepository boardRepository = new BoardRepository();
+    CommentRepository commentRepository = new CommentRepository();
     Scanner scanner = new Scanner(System.in);
 
     public void newPost() {
@@ -38,6 +41,26 @@ public class BoardService {
         BoardDTO boardDTO = boardRepository.findById(id);
         if (boardDTO != null) {
             System.out.println(boardDTO);
+            System.out.println("******댓글******");
+            CommentDTO commentDTO = commentRepository.commentList(id);
+            if(commentDTO != null){
+                System.out.println("commentDTO = " + commentDTO);
+            }else{
+                System.out.println("작성된 댓글이 없습니다.");
+            }
+            System.out.println("1.댓글작성 | 2.메뉴로 돌아가기");
+            int selectNo = scanner.nextInt();
+            if(selectNo == 1){
+                System.out.println("입력 : ");
+                String comment = scanner.next();
+                boolean commentDTO1 = commentRepository.comment(id,comment);
+                if(commentDTO1){
+                    System.out.println("작성 완료");
+                }else{
+                    System.out.println("작성 실패");
+                }
+            }
+
         } else {
             System.out.println("해당 글을 찾을 수 없습니다.");
         }
