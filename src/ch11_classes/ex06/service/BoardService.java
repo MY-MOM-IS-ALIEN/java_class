@@ -42,29 +42,32 @@ public class BoardService {
         if (boardDTO != null) {
             System.out.println(boardDTO);
             System.out.println("******댓글******");
-            CommentDTO commentDTO = commentRepository.commentList(id);
-            if(commentDTO != null){
-                System.out.println("commentDTO = " + commentDTO);
-            }else{
+            List<CommentDTO> commentDTOList = commentRepository.commentList(id);
+            if (commentDTOList.size() > 0) {
+                for (CommentDTO commentDTO1 : commentDTOList) {
+                    System.out.println(commentDTO1);
+                }
+            } else {
                 System.out.println("작성된 댓글이 없습니다.");
             }
             System.out.println("1.댓글작성 | 2.메뉴로 돌아가기");
             int selectNo = scanner.nextInt();
-            if(selectNo == 1){
+            if (selectNo == 1) {
                 System.out.println("입력 : ");
                 String comment = scanner.next();
-                boolean commentDTO1 = commentRepository.comment(id,comment);
-                if(commentDTO1){
+                CommentDTO commentDTO = new CommentDTO(id, CommonVariables.loginId, comment);
+                boolean commentDTO1 = commentRepository.comment(commentDTO);
+                if (commentDTO1) {
                     System.out.println("작성 완료");
-                }else{
+                } else {
                     System.out.println("작성 실패");
                 }
             }
-
         } else {
             System.out.println("해당 글을 찾을 수 없습니다.");
         }
     }
+
 
     public void update() {
         System.out.println("수정할 글번호");
@@ -113,7 +116,8 @@ public class BoardService {
             System.out.println("해당 글을 찾을 수 없습니다.");
         }
     }
-    public void findByTitle(){
+
+    public void findByTitle() {
         System.out.println("검색어 : ");
         String boardTitle = scanner.next();
         List<BoardDTO> boardDTO = boardRepository.findByTitle(boardTitle);

@@ -8,21 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommentRepository {
-    List<CommentDTO>commentDTOList = new ArrayList<>();
+    private static List<CommentDTO>commentDTOList = new ArrayList<>();
 
-    public boolean comment(Long id,String comment){
-        CommentDTO commentDTO = new CommentDTO(id,CommonVariables.loginId,comment);
+    public boolean comment(CommentDTO commentDTO){
+
         return commentDTOList.add(commentDTO);
         }
 
 
-    public CommentDTO commentList(Long id){
-
+    public List<CommentDTO> commentList(Long id){
+        List<CommentDTO>commentDTOList1 = new ArrayList<>();
         for (int i = 0; i < commentDTOList.size(); i++) {
             if(id.equals(commentDTOList.get(i).getBoardId())){
-                  CommentDTO commentDTO = commentDTOList.get(i);
-                  return commentDTO;
+                commentDTOList1.add(commentDTOList.get(i));
             }
-        }return null;
+        }return commentDTOList1;
     }
 }
