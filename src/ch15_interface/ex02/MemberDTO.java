@@ -1,4 +1,4 @@
-package ch13_map.Ex03;
+package ch15_interface.ex02;
 
 public class MemberDTO {
     private Long id;
