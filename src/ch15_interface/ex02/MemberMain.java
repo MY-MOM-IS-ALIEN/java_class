@@ -20,7 +20,7 @@ public class MemberMain {
             selectNo = scan.nextInt();
             if (selectNo == 1) {
                 // 호출하는 문장 작성
-                memberService.join();
+                memberService.save();
             } else if (selectNo == 2) {
                 // 호출하는 문장 작성
                 memberService.login();
@@ -32,7 +32,7 @@ public class MemberMain {
                 memberService.update();
             } else if (selectNo == 5) {
                 // 호출하는 문장 작성
-                memberService.resign();
+                memberService.delete();
             } else if (selectNo == 6) {
 //            // 호출하는 문장 작성
                 memberService.logout();

@@ -22,7 +22,7 @@ public class MemberRepository {
 
 
     public boolean join(MemberDTO memberDTO) {
-        memberDTOMap.put(MemberDTO.getIdValue(), memberDTO);
+//        memberDTOMap.put(MemberDTO.getId(), memberDTO);
         return true;
     }
 
