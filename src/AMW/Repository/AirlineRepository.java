@@ -1,5 +1,7 @@
 package AMW.Repository;
 
+import AMW.Commonvariables;
+import AMW.DTO.AirlineDTO;
 import AMW.DTO.Flight;
 
 import java.time.LocalDate;
@@ -13,6 +15,7 @@ public class AirlineRepository {
 
     List<Flight> osakaFlights = new ArrayList<>();
     int[] seat = new int[11];
+    public static List<AirlineDTO> airlineDTOList = new ArrayList<>();
 
     public List<Flight> generateFlightsToOsaka(int month, int day, int hour) {
         LocalDateTime departureDateTime = LocalDateTime.of(2024, month, day, hour, 0); // 분을 0으로 설정
@@ -65,18 +68,22 @@ public class AirlineRepository {
         return false;
     }
 
-    public boolean seatSelec(Long id, int seatNo) {
+    public AirlineDTO seatSelec(Long id, int seatNo) {
         for (int i = 0; i < osakaFlights.size(); i++) {
             if (id.equals(osakaFlights.get(i).getId())) {
                 if(seat[seatNo] == 0){
                     seat[seatNo] = 1;
-                    return true;
-
+                    AirlineDTO airlineDTO = new AirlineDTO(Commonvariables.loginEmail,osakaFlights.get(i).getArrivalCity(),osakaFlights.get(i).getDepartureMonth(),osakaFlights.get(i).getDepartureDay(),osakaFlights.get(i).getDepartureHour(),osakaFlights.get(i).getDepartureMinute(),osakaFlights.get(i).getArrivalHour(),osakaFlights.get(i).getArrivalMinute(),osakaFlights.get(i).getPrice());
+                    airlineDTOList.add(airlineDTO);
+                    return airlineDTO;
                 } else {
-                    return false;
+                    return null;
                 }
             }
         }
-        return false; // 해당 ID의 항공편을 찾지 못함
+        return null; // 해당 ID의 항공편을 찾지 못함
+    }
+    public List<AirlineDTO> flightCheck(){
+        return airlineDTOList;
     }
 }

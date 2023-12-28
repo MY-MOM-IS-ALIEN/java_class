@@ -23,7 +23,7 @@ public class MemberService {
             String memberName = scanner.next();
             System.out.println("가입자 전화번호를 입력해주세요");
             String memberMobile = scanner.next();
-            MemberDTO memberDTO1 = new MemberDTO(memberEmail, memberPassword, memberName, memberMobile,0);
+            MemberDTO memberDTO1 = new MemberDTO(memberEmail, memberPassword, memberName, memberMobile);
             boolean result = memberRepository.save(memberDTO1);
             if (result) {
                 System.out.println("가입 완료");

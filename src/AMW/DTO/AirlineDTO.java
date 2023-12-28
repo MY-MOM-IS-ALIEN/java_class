@@ -7,6 +7,7 @@ import java.util.List;
 public class AirlineDTO {
 
     private Long id;
+    private String loginId;
     private String departureCity;
     private String arrivalCity;
     private int departureMonth;
@@ -107,8 +108,17 @@ public class AirlineDTO {
         this.seat = seat;
     }
 
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
+
     public static Long idValue = 1L;
-    public AirlineDTO(String arrivalCity, int departureMonth, int departureDay, int departureHour, int departureMinute, int arrivalHour, int arrivalMinute, int price) {
+    public AirlineDTO(String loginId,String arrivalCity, int departureMonth, int departureDay, int departureHour, int departureMinute, int arrivalHour, int arrivalMinute, int price) {
+        this.loginId = loginId;
         this.id = idValue++;
         this.arrivalCity = arrivalCity;
         this.departureMonth = departureMonth;
@@ -120,18 +130,21 @@ public class AirlineDTO {
         this.price = price;
         this.seat = seat;
     }
+
     @Override
     public String toString() {
-        return
-                "번호 : " + id +
-                        " | 도착지 : " + arrivalCity +
-                        " | 출발날짜 : " + departureMonth +
-                        "." + departureDay + "일 " +
-                        "| 출발시간 : " + departureHour +
-                        ":" + departureMinute +
-                        " ~ 도착시간 : " + arrivalHour +
-                        ":" + arrivalMinute +
-                        " | 가격 : " + price + "원";
-
+        return "AirlineDTO{" +
+                "id=" + id +
+                ", loginId='" + loginId + '\'' +
+                ", departureCity='" + departureCity + '\'' +
+                ", arrivalCity='" + arrivalCity + '\'' +
+                ", departureMonth=" + departureMonth +
+                ", departureDay=" + departureDay +
+                ", departureHour=" + departureHour +
+                ", departureMinute=" + departureMinute +
+                ", arrivalHour=" + arrivalHour +
+                ", arrivalMinute=" + arrivalMinute +
+                ", price=" + price +
+                '}';
     }
 }

@@ -9,7 +9,7 @@ import java.util.*;
 
 public class AirlineService {
     AirlineRepository airlineRepository = new AirlineRepository();
-    public static MileageService mileageService = new MileageService();
+    MileageService mileageService = new MileageService();
     Scanner scanner = new Scanner(System.in);
 
     public void findAll() {
@@ -38,10 +38,10 @@ public class AirlineService {
             System.out.println("좌석을 선택해주세요");
             System.out.println("1~10번 좌석 중 선택");
             int seatNo = scanner.nextInt();
-            boolean airlineDTO1 = airlineRepository.checkSeat(id,seatNo);
+            boolean airlineDTO1 = airlineRepository.checkSeat(id, seatNo);
             if (airlineDTO1) {
-                boolean airlineDTO2 = airlineRepository.seatSelec(id, seatNo);
-                if (airlineDTO2) {
+                AirlineDTO airlineDTO2 = airlineRepository.seatSelec(id, seatNo);
+                if (airlineDTO2 != null) {
                     System.out.println("좌석 선택이 완료되었습니다.");
                     System.out.println("결제 후 예약이 완료됩니다.");
                     mileageService.amount();

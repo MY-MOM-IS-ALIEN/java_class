@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberRepository {
-    public static List<MemberDTO>memberDTOList = new ArrayList<>();
+    public static List<MemberDTO> memberDTOList = new ArrayList<>();
 
     public boolean check(String memberEmail) {
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if(memberEmail.equals(memberDTOList.get(i).getMemberEmail())){
+            if (memberEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 return false;
             }
         }
@@ -25,30 +25,34 @@ public class MemberRepository {
 
     public boolean login(String memberEmail, String memberPassword) {
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if(memberEmail.equals(memberDTOList.get(i).getMemberEmail()) && memberPassword.equals(memberDTOList.get(i).getMemberPassword())){
+            if (memberEmail.equals(memberDTOList.get(i).getMemberEmail()) && memberPassword.equals(memberDTOList.get(i).getMemberPassword())) {
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
 
     public boolean update(String memberMobile) {
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if(Commonvariables.loginEmail.equals(memberDTOList.get(i).getMemberEmail())){
+            if (Commonvariables.loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 memberDTOList.get(i).setMemberMobile(memberMobile);
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
 
     public boolean delete(String memberPassword) {
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if(memberPassword.equals(memberDTOList.get(i).getMemberPassword())){
+            if (memberPassword.equals(memberDTOList.get(i).getMemberPassword())) {
                 memberDTOList.remove(i);
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
-    public List<MemberDTO> memberCheck(){
+
+    public static List<MemberDTO> memberCheck() {
         return memberDTOList;
     }
 }
