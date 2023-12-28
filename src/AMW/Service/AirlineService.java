@@ -9,7 +9,7 @@ import java.util.*;
 
 public class AirlineService {
     AirlineRepository airlineRepository = new AirlineRepository();
-    MileageService mileageService = new MileageService();
+    public static MileageService mileageService = new MileageService();
     Scanner scanner = new Scanner(System.in);
 
     public void findAll() {

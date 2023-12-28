@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberRepository {
-    List<MemberDTO>memberDTOList = new ArrayList<>();
+    public static List<MemberDTO>memberDTOList = new ArrayList<>();
+
     public boolean check(String memberEmail) {
         for (int i = 0; i < memberDTOList.size(); i++) {
             if(memberEmail.equals(memberDTOList.get(i).getMemberEmail())){
@@ -46,5 +47,8 @@ public class MemberRepository {
                 return true;
             }
         }return false;
+    }
+    public List<MemberDTO> memberCheck(){
+        return memberDTOList;
     }
 }
