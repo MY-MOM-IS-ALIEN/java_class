@@ -1,7 +1,10 @@
-package AMW;
+package AMW.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import AMW.Commonvariables;
+import AMW.DTO.MemberDTO;
+import AMW.Repository.AirlineRepository;
+import AMW.Repository.MemberRepository;
+
 import java.util.Scanner;
 
 public class MemberService {
@@ -87,12 +90,14 @@ public class MemberService {
         boolean run = true;
 
         while (run) {
-            System.out.println("----------------------------------------------------------------------------------------------");
-            System.out.println("1.항공권 조회 | 2.항공권 예매 | 3.예매정보 조회 | 4.예매정보 변경 | 5.체크인 | 6.항공권 검색 | 7.장바구니");
-            System.out.println("----------------------------------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------");
+            System.out.println("1.항공권 조회 | 2.항공권 예매 | 3.예매정보 조회 | 4.예매정보 변경 | 5.체크인 | 0.종료");
+            System.out.println("----------------------------------------------------------------------------");
             int selectNo = scanner.nextInt();
             if (selectNo == 1) {
                 airlineService.findAll();
+            } else if (selectNo == 2) {
+                airlineService.reservation();
             }
         }
     }

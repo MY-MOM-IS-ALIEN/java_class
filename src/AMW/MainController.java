@@ -1,5 +1,7 @@
 package AMW;
 
+import AMW.Service.MemberService;
+
 import java.util.Scanner;
 
 public class MainController {

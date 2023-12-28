@@ -1,4 +1,7 @@
-package AMW;
+package AMW.Repository;
+
+import AMW.Commonvariables;
+import AMW.DTO.MemberDTO;
 
 import java.util.ArrayList;
 import java.util.List;

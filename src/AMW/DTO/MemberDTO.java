@@ -1,4 +1,4 @@
-package AMW;
+package AMW.DTO;
 
 public class MemberDTO {
     private Long id;

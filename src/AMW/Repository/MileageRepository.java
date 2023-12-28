@@ -1,4 +1,4 @@
-package AMW;
+package AMW.Repository;
 
 public class MileageRepository {
 }

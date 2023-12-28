@@ -1,4 +1,4 @@
-package AMW;
+package AMW.DTO;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
