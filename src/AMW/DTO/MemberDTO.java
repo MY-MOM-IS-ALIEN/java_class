@@ -6,6 +6,7 @@ public class MemberDTO {
     private String memberPassword;
     private String memberName;
     private String memberMobile;
+    private long balance;
 
 
     public Long getId() {
@@ -48,15 +49,23 @@ public class MemberDTO {
         this.memberMobile = memberMobile;
     }
 
+    public long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(long balance) {
+        this.balance = balance;
+    }
 
     public static Long idValue = 1L;
 
-    public MemberDTO(String memberEmail, String memberPassword, String memberName, String memberMobile) {
+    public MemberDTO(String memberEmail, String memberPassword, String memberName, String memberMobile ,long balance) {
         this.id = idValue++;
         this.memberEmail = memberEmail;
         this.memberPassword = memberPassword;
         this.memberName = memberName;
         this.memberMobile = memberMobile;
+        this.balance = balance;
     }
 
     @Override
@@ -67,6 +76,7 @@ public class MemberDTO {
                 ", memberPassword='" + memberPassword + '\'' +
                 ", memberName='" + memberName + '\'' +
                 ", memberMobile='" + memberMobile + '\'' +
+                ", balance=" + balance +
                 '}';
     }
 }

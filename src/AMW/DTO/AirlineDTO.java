@@ -16,7 +16,7 @@ public class AirlineDTO {
     private int departureMinute;
     private int arrivalHour;
     private int arrivalMinute;
-    private int price;
+    private long price;
     private static int[] seat = new int[11];
 
 
@@ -92,11 +92,11 @@ public class AirlineDTO {
         this.arrivalMinute = arrivalMinute;
     }
 
-    public int getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 
@@ -117,7 +117,7 @@ public class AirlineDTO {
     }
 
     public static Long idValue = 1L;
-    public AirlineDTO(String loginId,String arrivalCity, int departureMonth, int departureDay, int departureHour, int departureMinute, int arrivalHour, int arrivalMinute, int price) {
+    public AirlineDTO(String loginId,String arrivalCity, int departureMonth, int departureDay, int departureHour, int departureMinute, int arrivalHour, int arrivalMinute, long price) {
         this.loginId = loginId;
         this.id = idValue++;
         this.arrivalCity = arrivalCity;

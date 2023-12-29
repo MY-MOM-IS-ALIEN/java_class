@@ -10,7 +10,7 @@ public class Flight {
     private int departureMinute;
     private int arrivalHour;
     private int arrivalMinute;
-    private int price;
+    private long price;
     private static int[] seat = new int[11];
 
 
@@ -86,11 +86,11 @@ public class Flight {
         this.arrivalMinute = arrivalMinute;
     }
 
-    public int getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 
@@ -103,7 +103,7 @@ public class Flight {
     }
 
     public static Long idValue = 1L;
-    public Flight(String arrivalCity, int departureMonth, int departureDay, int departureHour, int departureMinute, int arrivalHour, int arrivalMinute, int price) {
+    public Flight(String arrivalCity, int departureMonth, int departureDay, int departureHour, int departureMinute, int arrivalHour, int arrivalMinute, long price) {
         this.id = idValue++;
         this.arrivalCity = arrivalCity;
         this.departureMonth = departureMonth;

@@ -5,12 +5,15 @@ import AMW.DTO.MemberDTO;
 import AMW.Repository.AirlineRepository;
 import AMW.Repository.MemberRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MemberService {
     MemberRepository memberRepository = new MemberRepository();
     AirlineService airlineService = new AirlineService();
     Scanner scanner = new Scanner(System.in);
+    List<MemberDTO>memberDTOList = new ArrayList<>();
 
     public void save() {
         System.out.println("사용하실 이메일을 입력해주세요. ");
@@ -23,7 +26,7 @@ public class MemberService {
             String memberName = scanner.next();
             System.out.println("가입자 전화번호를 입력해주세요");
             String memberMobile = scanner.next();
-            MemberDTO memberDTO1 = new MemberDTO(memberEmail, memberPassword, memberName, memberMobile);
+            MemberDTO memberDTO1 = new MemberDTO(memberEmail, memberPassword, memberName, memberMobile, 0);
             boolean result = memberRepository.save(memberDTO1);
             if (result) {
                 System.out.println("가입 완료");
@@ -87,17 +90,26 @@ public class MemberService {
 
     public void airline() {
         boolean run = true;
-
-        while (run) {
-            System.out.println("----------------------------------------------------------------------------");
-            System.out.println("1.항공권 조회 | 2.항공권 예매 | 3.예매정보 조회 | 4.예매정보 변경 | 5.체크인 | 0.종료");
-            System.out.println("----------------------------------------------------------------------------");
-            int selectNo = scanner.nextInt();
-            if (selectNo == 1) {
-                airlineService.findAll();
-            } else if (selectNo == 2) {
-                airlineService.reservation();
+        if (Commonvariables.loginEmail != null) {
+            while (run) {
+                System.out.println("----------------------------------------------------------------------------");
+                System.out.println("1.항공권 조회 | 2.항공권 예매 | 3.예매정보 조회 | 4.예매 취소 | 0.종료");
+                System.out.println("----------------------------------------------------------------------------");
+                int selectNo = scanner.nextInt();
+                if (selectNo == 1) {
+                    airlineService.findAll();
+                } else if (selectNo == 2) {
+                    airlineService.reservation();
+                } else if (selectNo == 3) {
+                    airlineService.findMyFlight();
+                } else if (selectNo == 4){
+                    airlineService.blackconsumer();
+                } else if (selectNo == 0) {
+                    run = false;
+                }
             }
+        }else {
+            System.out.println("로그인 후 이용 가능합니다.");
         }
     }
 }
