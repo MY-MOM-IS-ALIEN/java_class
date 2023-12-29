@@ -159,8 +159,8 @@ public class AirlineService {
                 String pass = scanner.next();
                 for (int i = 0; i < memberDTOList.size(); i++) {
                     if (pass.equals(memberDTOList.get(i).getMemberPassword())) {
-                        boolean cancel = airlineRepository.cancle(id);
-                        if (cancel) {
+                        MemberDTO cancel = airlineRepository.cancle(id);
+                        if (cancel != null) {
                             System.out.println("항공권 예약이 취소 되었습니다");
                         } else {
                             System.out.println("비밀번호가 일치하지 않습니다.");

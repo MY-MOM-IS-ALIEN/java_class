@@ -100,7 +100,7 @@ public class AirlineRepository {
         return false;
     }
 
-    public boolean cancle(Long id) {
+    public MemberDTO cancle(Long id) {
         MemberDTO memberDTO = null;
         for (int i = 0; i < airlineDTOList.size(); i++) {
             if (id.equals(airlineDTOList.get(i).getId())){
@@ -110,9 +110,9 @@ public class AirlineRepository {
                 memberDTOS.setBalance(memberDTO1);
                 memberDTO = memberDTOS;
                 airlineDTOList.remove(i);
-                return true;
+                return memberDTO;
             }
         }
-        return false;
+        return memberDTO;
     }
 }
