@@ -16,7 +16,7 @@ public class AirlineService {
     MemberRepository memberRepository = new MemberRepository();
     //    MileageService mileageService = new MileageService();
     Scanner scanner = new Scanner(System.in);
-    List<MemberDTO> memberDTOList = new ArrayList<>();
+    public static List<MemberDTO> memberDTOList = new ArrayList<>();
     boolean run = true;
 
     public void findAll() {
@@ -58,50 +58,54 @@ public class AirlineService {
                         int selectNo = scanner.nextInt();
                         if (selectNo == 1) {
                             System.out.println("입금할 금액을 입력하세요");
-                            long amount = scanner.nextInt();
+                            long amount = scanner.nextLong();
                             MemberDTO amount1 = memberRepository.amount(Commonvariables.loginEmail, amount);
                             if (amount1 != null) {
                                 System.out.println("입금 완료");
                                 System.out.println("현재 잔액 : " + amount1.getBalance());
                             } else
                                 System.out.println("입금 실패");
+                            System.out.println(amount1);
                         } else if (selectNo == 2) {
-                            for (int i = 0; i < memberDTOList.size(); i++) {
-                                if (Commonvariables.loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
-                                    System.out.println("현재 잔액 : " + memberDTOList.get(i).getBalance());
+                            List<MemberDTO> memberDTOS = memberRepository.memberCheck();
+                            for (int i = 0; i < memberDTOS.size(); i++) {
+                                if (Commonvariables.loginEmail.equals(memberDTOS.get(i).getMemberEmail())) {
+                                    System.out.println("memberDTOS = " + memberDTOS.get(i).getBalance());
                                 }
                             }
                         } else if (selectNo == 3) {
-                            List<MemberDTO> memberDTOList = memberRepository.memberCheck();
-                            for (int i = 0; i < memberDTOList.size(); i++) {
-                                if (Commonvariables.loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
+                            System.out.println("출금할 금액을 입력하세요");
+                            long deposit = scanner.nextLong();
+                            MemberDTO memberDTO = memberRepository.deposit(Commonvariables.loginEmail, deposit);
+                            if (memberDTO != null) {
+                                if (Commonvariables.loginEmail.equals(memberDTO.getMemberEmail())) {
+                                    System.out.println("현재 잔액 : " + memberDTO.getBalance());
                                 }
-                                System.out.println("현재 잔액 : " + memberDTOList.get(i).getBalance());
                             }
                         } else if (selectNo == 4) {
-                            for (int i = 0; i < memberDTOList.size(); i++) {
-                                if (Commonvariables.loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
-                                    System.out.println(memberDTOList.get(i));
-                                    System.out.println("예약정보가 맞으면 결제를 계속 진행해주세요");
-                                    System.out.println("---------------------------");
-                                    System.out.println("1.계속 진행 | 2.메뉴로 돌아가기");
-                                    System.out.println("---------------------------");
-                                    int selectNo1 = scanner.nextInt();
-                                    if (selectNo1 == 1) {
-                                        System.out.println("비밀번호를 입력해주세요");
-                                        String pass = scanner.next();
-                                        MemberDTO memberDTO = memberRepository.payment(pass);
-                                        if (memberDTO != null) {
-                                            System.out.println("예약 완료");
-                                        } else {
-                                            System.out.println("예약 실패");
-                                        }
-                                    } else {
-                                        System.out.println("비밀번호가 일치하지 않습니다.");
-                                    }
-                                }
+                            List<AirlineDTO> airlineDTOList = airlineRepository.flightCheck();
+                            for (int i = 0; i < airlineDTOList.size(); i++) {
+                                if(Commonvariables.loginEmail.equals(airlineDTOList.get(i).getLoginId()))
+                                System.out.println("airlineDTOList = " + airlineDTOList.get(i));
                             }
-
+                            System.out.println("예약정보가 맞으면 결제를 계속 진행해주세요");
+                            System.out.println("---------------------------");
+                            System.out.println("1.계속 진행 | 2.메뉴로 돌아가기");
+                            System.out.println("---------------------------");
+                            int selectNo1 = scanner.nextInt();
+                            if (selectNo1 == 1) {
+                                System.out.println("비밀번호를 입력해주세요");
+                                String pass = scanner.next();
+                                MemberDTO memberDTO = memberRepository.payment(pass);
+                                    System.out.println("memberDTO = " + memberDTO);
+                                if (memberDTO != null) {
+                                    System.out.println("예약 완료");
+                                } else {
+                                    System.out.println("예약 실패");
+                                }
+                            } else {
+                                System.out.println("비밀번호가 일치하지 않습니다.");
+                            }
                         } else if (selectNo == 0) {
                             run = false;
                         }
@@ -169,8 +173,6 @@ public class AirlineService {
         }
     }
 }
-
-
 
 
 

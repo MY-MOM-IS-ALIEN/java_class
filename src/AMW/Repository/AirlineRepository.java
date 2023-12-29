@@ -16,7 +16,7 @@ public class AirlineRepository {
 
     List<Flight> osakaFlights = new ArrayList<>();
     int[] seat = new int[11];
-    public List<AirlineDTO> airlineDTOList = new ArrayList<>();
+    public static List<AirlineDTO> airlineDTOList = new ArrayList<>();
     List<MemberDTO>memberDTOList = new ArrayList<>();
 
 

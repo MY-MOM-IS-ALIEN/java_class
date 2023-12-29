@@ -30,6 +30,7 @@ public class MemberService {
             boolean result = memberRepository.save(memberDTO1);
             if (result) {
                 System.out.println("가입 완료");
+                System.out.println("result = " + result);
             } else {
                 System.out.println("가입 실패");
             }
